@@ -29,6 +29,9 @@ importers:
       '@primeuix/themes':
         specifier: ^2.0.3
         version: 2.0.3
+      primeng:
+        specifier: ^21.1.1
+        version: 21.1.1(0af774cf2f8cff84beb80796cdd955c7)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -54,9 +57,6 @@ importers:
       postcss:
         specifier: ^8.5.3
         version: 8.5.6
-      primeng:
-        specifier: 21.1.1
-        version: 21.1.1(0af774cf2f8cff84beb80796cdd955c7)
       tailwindcss:
         specifier: ^4.1.12
         version: 4.1.18
