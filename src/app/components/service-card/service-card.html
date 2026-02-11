@@ -1,19 +1,60 @@
-<div class="mb-4 p-8 flex items-center justify-center">
-  <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
-    <ng-template #header>
-      <img alt="Card" class="w-full" [src]="service().img_url" />
-    </ng-template>
-    <ng-template #title> {{ service().name }} </ng-template>
-    <ng-template #subtitle> Card subtitle </ng-template>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-      quas!
-    </p>
-    <ng-template #footer>
-      <div class="flex gap-4 mt-1">
-        <p-button label="Cancel" severity="secondary" class="w-full" [outlined]="true" styleClass="w-full" />
-        <p-button label="Save" class="w-full" styleClass="w-full" />
+<div class="w-full mb-4 p-8 flex items-center justify-center h-full">
+  <article class="w-full max-w-96 flex flex-col h-full overflow-hidden rounded-2xl  shadow-sm ring-1 ring-slate-200 text-white bg-white/80 dark:bg-[#0F172A]/80 hover:shadow-xl hover:shadow-white/25 transition-all">
+    <!-- Header -->
+    <div class="w-full">
+      <img
+        alt="Card"
+        class="w-full h-48 object-cover"
+        src="{{ service().img_url }}"
+      />
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 flex flex-col flex-1">
+      <div class="flex justify-between items-c">
+        <div>
+          <!-- Title -->
+          <h3 class="text-lg font-semibold  leading-tight">
+            {{ service().name }}
+          </h3>
+
+          <!-- Subtitle -->
+          <p class="mt-1 text-sm ">
+            {{ service().price }} €
+          </p>
+        </div>
+        @if (service().id === 3) {
+          <form class="flex flex-col justify-between text-right space-y-2" aria-label="web-project-options">
+            <div class="flex items-center justify-end space-x-2">
+              <label for="pages" class="text-xs text-slate-600 dark:text-slate-300">Number of Pages</label>
+              <input id="pages" name="pages" type="number" min="1" value="1" class="w-16 px-2 py-1 text-sm text-center rounded-md border border-slate-200 bg-white/90 dark:bg-slate-800 dark:border-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="number of pages" />
+            </div>
+            <div class="flex items-center justify-end space-x-2">
+              <label for="languages" class="text-xs text-slate-600 dark:text-slate-300">Number of Languages</label>
+              <input id="languages" name="languages" type="number" min="1" value="1" class="w-16 px-2 py-1 text-sm text-center rounded-md border border-slate-200 bg-white/90 dark:bg-slate-800 dark:border-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="number of languages" />
+            </div>
+          </form>
+        }
       </div>
-    </ng-template>
-  </p-card>
+
+      <!-- Body -->
+      <p class="mt-4 text-sm leading-relaxed">
+        {{ service().description }}
+      </p>
+
+      <!-- Footer -->
+      <div class="mt-6 mt-auto">
+        <button
+          type="button"
+          class="w-full inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold
+                 bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800
+                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                 transition hover:cursor-pointer"
+          (click)="onAddService()"
+        >
+          {{ !service().selected ? 'Add' : 'Service added' }}
+        </button>
+      </div>
+    </div>
+  </article>
 </div>

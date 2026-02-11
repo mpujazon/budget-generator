@@ -9,10 +9,11 @@
     </p>
   </div>
   <!-- ServicesList -->
-  @for (service of servicesList; track service.id) {
-    <app-service-card
-      [service]="service"
-
-    />
-  }
+  <div class="flex flex-wrap justify-center">
+    @for (service of servicesList; track service.id) {
+      <app-service-card
+        [service]="service"
+      />
+    }
+  </div>
 </div>

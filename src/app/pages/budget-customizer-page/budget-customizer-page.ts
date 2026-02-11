@@ -15,7 +15,7 @@ export class BudgetCustomizerPage {
     {
       id: 1,
       name: "SEO",
-      description: "Programació d'una web responsive completa",
+      description: "Search engine optimization to boost organic visibility and attract high-quality traffic.",
       img_url: "/services/seo.webp",
       price: 300,
       selected: false
@@ -23,7 +23,7 @@ export class BudgetCustomizerPage {
     {
       id: 2,
       name: "Ads",
-      description: "Programació d'una web responsive completa",
+      description: "Strategic paid advertising campaigns designed to maximize ROI and drive immediate conversions.",
       img_url: "/services/ads.webp",
       price: 400,
       selected: false
@@ -31,10 +31,10 @@ export class BudgetCustomizerPage {
     {
       id: 3,
       name: "Web",
-      description: "Programació d'una web responsive completa",
+      description: "Custom responsive web development focused on high performance and seamless user experience.",
       img_url: "/services/web.webp",
       price: 500,
-      selected: true,
+      selected: false,
       pages: 1,
       languages: 3
     }
