@@ -9,5 +9,10 @@
     </p>
   </div>
   <!-- ServicesList -->
-  <app-service-card/>
+  @for (service of servicesList; track service.id) {
+    <app-service-card
+      [service]="service"
+
+    />
+  }
 </div>
