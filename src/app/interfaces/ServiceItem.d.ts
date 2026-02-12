@@ -2,12 +2,13 @@ export interface ServiceItem{
   id: number;
   name: string;
   description: string;
-  img_url: string;
+  imgUrl: string;
   price: number;
   selected: boolean;
+  options?:WebServiceOptions
 }
 
-export interface WebServiceItem extends ServiceItem{
+export interface WebServiceOptions{
   pages: number;
   languages: number;
 }

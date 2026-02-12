@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ServiceCard} from '../../components/service-card/service-card';
-import {ServiceItem, WebServiceItem} from '../../interfaces/ServiceItem';
+import {ServiceItem} from '../../interfaces/ServiceItem';
 
 @Component({
   selector: 'app-budget-customizer-page',
@@ -11,12 +11,12 @@ import {ServiceItem, WebServiceItem} from '../../interfaces/ServiceItem';
 })
 export class BudgetCustomizerPage {
   // Temporal Data Provider:
-  servicesList: (ServiceItem | WebServiceItem)[] = [
+  servicesList: ServiceItem[] = [
     {
       id: 1,
       name: "SEO",
       description: "Search engine optimization to boost organic visibility and attract high-quality traffic.",
-      img_url: "/services/seo.webp",
+      imgUrl: "/services/seo.webp",
       price: 300,
       selected: false
     },
@@ -24,7 +24,7 @@ export class BudgetCustomizerPage {
       id: 2,
       name: "Ads",
       description: "Strategic paid advertising campaigns designed to maximize ROI and drive immediate conversions.",
-      img_url: "/services/ads.webp",
+      imgUrl: "/services/ads.webp",
       price: 400,
       selected: false
     },
@@ -32,11 +32,13 @@ export class BudgetCustomizerPage {
       id: 3,
       name: "Web",
       description: "Custom responsive web development focused on high performance and seamless user experience.",
-      img_url: "/services/web.webp",
+      imgUrl: "/services/web.webp",
       price: 500,
       selected: false,
-      pages: 1,
-      languages: 3
+      options:{
+        pages: 1,
+        languages: 1
+      }
     }
   ];
 }
