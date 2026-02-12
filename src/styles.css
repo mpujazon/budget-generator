@@ -4,7 +4,6 @@
 @import "primeng";
 
 @theme {
-  /* Colores Personalizados */
   --color-primary: #3b82f6;
   --color-secondary: #06b6d4;
   --color-background-light: #f8fafc;
@@ -13,12 +12,12 @@
   --color-text-dark: #f8fafc;
   --color-card-dark: #1e293b;
   --color-card-light: #ffffff;
+  --color-successful-500: #52be4f;
+  --color-successful-400: #75cb72;
 
-  /* Tipografías */
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Bordes */
   --radius-default: 0.5rem;
 }
 

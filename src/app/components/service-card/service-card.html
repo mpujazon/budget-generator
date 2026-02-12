@@ -1,5 +1,5 @@
 <div class="w-full mb-4 p-8 flex items-center justify-center h-full">
-  <article class="w-full max-w-96 flex flex-col h-full overflow-hidden rounded-2xl  shadow-sm ring-1 ring-slate-200 text-white bg-white/80 dark:bg-[#0F172A]/80 hover:shadow-xl hover:shadow-white/25 transition-all">
+  <article class="w-full max-w-96 flex flex-col h-full overflow-hidden rounded-2xl  shadow-sm ring-1 ring-slate-200 bg-card-light dark:bg-card-dark hover:shadow-xl hover:shadow-white/25 transition-all">
     <!-- Header -->
     <div class="w-full">
       <img
@@ -19,7 +19,7 @@
           </h3>
 
           <!-- Subtitle -->
-          <p class="mt-1 text-sm ">
+          <p class="mt-1 text-2xl ">
             {{ service().price }} €
           </p>
         </div>
@@ -43,13 +43,16 @@
       </p>
 
       <!-- Footer -->
-      <div class="mt-6 mt-auto">
+      <div class="mt-auto">
         <button
           type="button"
           class="w-full inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold
                  bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800
                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                  transition hover:cursor-pointer"
+          [class.bg-successful-400] = "service().selected"
+          [class.hover:bg-successful-500] = "service().selected"
+
           (click)="onAddService()"
         >
           {{ !service().selected ? 'Add' : 'Service added' }}
