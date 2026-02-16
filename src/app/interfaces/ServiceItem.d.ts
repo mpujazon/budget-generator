@@ -9,6 +9,13 @@ export interface ServiceItem{
 }
 
 export interface WebServiceOptions{
-  pages: number;
-  languages: number;
+  pages?: number;
+  languages?: number;
+}
+
+export interface ServiceUpdates{
+  id: number;
+  selected?: boolean;
+  pages?: number;
+  languages?: number;
 }

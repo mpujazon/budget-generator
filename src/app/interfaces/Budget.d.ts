@@ -5,6 +5,6 @@ export interface Budget{
   id: string;
   customer: CustomerData;
   items: ServiceItem[];
-  created_at: string;
+  date: string;
   totals: number;
 }
