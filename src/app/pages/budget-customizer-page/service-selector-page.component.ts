@@ -1,6 +1,6 @@
 import {Component, inject, signal} from '@angular/core';
 import {ServiceCard} from '../../components/service-card/service-card';
-import {ServiceItem, ServiceUpdates} from '../../interfaces/ServiceItem';
+import {ServiceUpdates} from '../../interfaces/ServiceItem';
 import {BudgetService} from '../../services/budget-service';
 
 @Component({
@@ -17,21 +17,12 @@ export class ServiceSelectorPage {
   // Temporal Data Provider:
   servicesList = this.budgetService.getWebServices();
 
+
   updateServiceOptions(updates: ServiceUpdates) : void {
     let serviceItem = this.servicesList.find((service)=> service.id === updates.id);
-    if (serviceItem === undefined) return;
+    if(serviceItem === undefined) return;
 
-    if (updates.selected) {
-      serviceItem.selected = updates.selected;
-    }
-
-    if (updates.pages && serviceItem.options?.pages) {
-      serviceItem.options.pages = updates.pages;
-    }
-
-    if (updates.languages && serviceItem.options?.languages) {
-      serviceItem.options.languages = updates.languages;
-    }
+    serviceItem = this.budgetService.updateServiceOptions(serviceItem, updates);
     this.totalPrice.set(this.budgetService.calculateTotals(this.servicesList));
   }
 }

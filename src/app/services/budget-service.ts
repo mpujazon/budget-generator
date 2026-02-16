@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ServiceItem} from '../interfaces/ServiceItem';
+import {ServiceItem, ServiceUpdates} from '../interfaces/ServiceItem';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +37,22 @@ export class BudgetService {
       }
     ];
   }
+
+  updateServiceOptions(service: ServiceItem, updates: ServiceUpdates): ServiceItem{
+    if (updates.selected) {
+      service.selected = updates.selected;
+    }
+
+    if (updates.pages && service.options?.pages) {
+      service.options.pages = updates.pages;
+    }
+
+    if (updates.languages && service.options?.languages) {
+      service.options.languages = updates.languages;
+    }
+    return service;
+  }
+
   calculateTotals(items: ServiceItem[]): number{
     const COST_PER_PAGE = 30;
     const COST_PER_LANG = 30;
