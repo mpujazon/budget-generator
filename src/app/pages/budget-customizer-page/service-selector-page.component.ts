@@ -1,6 +1,7 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {ServiceCard} from '../../components/service-card/service-card';
 import {ServiceItem, ServiceUpdates} from '../../interfaces/ServiceItem';
+import {BudgetService} from '../../services/budget-service';
 
 @Component({
   selector: 'app-budget-customizer-page',
@@ -11,6 +12,8 @@ import {ServiceItem, ServiceUpdates} from '../../interfaces/ServiceItem';
 })
 export class ServiceSelectorPage {
   totalPrice = signal<number>(0);
+  budgetService = inject(BudgetService);
+
   // Temporal Data Provider:
   servicesList: ServiceItem[] = [
     {
@@ -58,6 +61,7 @@ export class ServiceSelectorPage {
     if (updates.languages && serviceItem.options?.languages) {
       serviceItem.options.languages = updates.languages;
     }
+    this.totalPrice.set(this.budgetService.calculateTotals(this.servicesList));
   }
 }
 
