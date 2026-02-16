@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BudgetCustomizerPage } from './budget-customizer-page';
+import { ServiceSelectorPage } from './service-selector-page.component';
 
 describe('BudgetCustomizerPage', () => {
-  let component: BudgetCustomizerPage;
-  let fixture: ComponentFixture<BudgetCustomizerPage>;
+  let component: ServiceSelectorPage;
+  let fixture: ComponentFixture<ServiceSelectorPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BudgetCustomizerPage]
+      imports: [ServiceSelectorPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BudgetCustomizerPage);
+    fixture = TestBed.createComponent(ServiceSelectorPage);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ServiceCard} from '../../components/service-card/service-card';
-import {ServiceItem} from '../../interfaces/ServiceItem';
+import {ServiceItem, ServiceUpdates} from '../../interfaces/ServiceItem';
 
 @Component({
   selector: 'app-budget-customizer-page',
   imports: [
     ServiceCard
   ],
-  templateUrl: './budget-customizer-page.html'
+  templateUrl: './service-selector-page.component.html'
 })
-export class BudgetCustomizerPage {
+export class ServiceSelectorPage {
+  totalPrice = signal<number>(0);
   // Temporal Data Provider:
   servicesList: ServiceItem[] = [
     {
@@ -41,6 +42,11 @@ export class BudgetCustomizerPage {
       }
     }
   ];
+
+  printOutput(updates: ServiceUpdates) : void {
+
+    console.log(updates)
+  }
 }
 
 
