@@ -13,9 +13,9 @@
     @for (service of servicesList; track service.id) {
       <app-service-card
         [service]="service"
-        (onUpdateService)="printOutput($event)"
+        (onUpdateService)="updateServiceOptions($event)"
       />
     }
   </div>
-  <p class="text-center text-3xl outline-1 rounded-default w-fit p-4 mx-auto">Total price: <strong>{{totalPrice()}} €</strong></p>
+  <p class="text-center text-3xl outline-1 rounded-default w-fit p-4 mx-auto">Total price: <strong>{{ totalPrice() }} €</strong></p>
 </div>

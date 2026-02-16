@@ -43,9 +43,21 @@ export class ServiceSelectorPage {
     }
   ];
 
-  printOutput(updates: ServiceUpdates) : void {
+  updateServiceOptions(updates: ServiceUpdates) : void {
+    let serviceItem = this.servicesList.find((service)=> service.id === updates.id);
+    if (serviceItem === undefined) return;
 
-    console.log(updates)
+    if (updates.selected) {
+      serviceItem.selected = updates.selected;
+    }
+
+    if (updates.pages && serviceItem.options?.pages) {
+      serviceItem.options.pages = updates.pages;
+    }
+
+    if (updates.languages && serviceItem.options?.languages) {
+      serviceItem.options.languages = updates.languages;
+    }
   }
 }
 
