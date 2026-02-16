@@ -15,36 +15,7 @@ export class ServiceSelectorPage {
   budgetService = inject(BudgetService);
 
   // Temporal Data Provider:
-  servicesList: ServiceItem[] = [
-    {
-      id: 1,
-      name: "SEO",
-      description: "Search engine optimization to boost organic visibility and attract high-quality traffic.",
-      imgUrl: "/services/seo.webp",
-      price: 300,
-      selected: false
-    },
-    {
-      id: 2,
-      name: "Ads",
-      description: "Strategic paid advertising campaigns designed to maximize ROI and drive immediate conversions.",
-      imgUrl: "/services/ads.webp",
-      price: 400,
-      selected: false
-    },
-    {
-      id: 3,
-      name: "Web",
-      description: "Custom responsive web development focused on high performance and seamless user experience.",
-      imgUrl: "/services/web.webp",
-      price: 500,
-      selected: false,
-      options:{
-        pages: 1,
-        languages: 1
-      }
-    }
-  ];
+  servicesList = this.budgetService.getWebServices();
 
   updateServiceOptions(updates: ServiceUpdates) : void {
     let serviceItem = this.servicesList.find((service)=> service.id === updates.id);
