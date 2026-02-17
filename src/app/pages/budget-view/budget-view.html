@@ -1,0 +1,156 @@
+<main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Header Info -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+    <div>
+      <div class="flex items-center gap-3 mb-2">
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 tracking-wider uppercase">Approve Pending</span>
+        <span class="text-slate-500 text-sm">•</span>
+        <span class="text-slate-400 text-sm">{{ budget.date.toLocaleString('en-US',{dateStyle:'full'}) }}</span>
+      </div>
+      <h2 class="text-4xl font-black text-white tracking-tight">Budget #{{ budget.id.slice(0,8) }}</h2>
+      <p class="text-slate-400 mt-1">Vantyx - Web Services and Solutions</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <button class="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-white font-semibold transition-all cursor-pointer">
+        Download PDF
+      </button>
+      <button class="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold transition-all shadow-lg shadow-primary/25 cursor-pointer">
+        Approve budget
+      </button>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Left Column: Summary & Items -->
+    <div class="lg:col-span-2 space-y-8">
+      <!-- Highlight Summary Card -->
+      <div class="relative overflow-hidden rounded-xl bg-surface-dark border border-white/10 p-8 shadow-2xl">
+        <div class="relative z-10">
+          <p class="text-slate-400 font-medium uppercase tracking-widest text-xs mb-1">Project Total Investment</p>
+          <div class="flex items-baseline gap-2">
+            <span class="text-5xl font-black text-primary tracking-tighter">{{ budget.totals }}</span>
+            <span class="text-slate-500 font-medium text-2xl">€</span>
+          </div>
+          <div class="mt-4 flex items-center gap-4">
+            <div class="flex items-center gap-1.5 text-accent-cyan text-sm font-semibold">
+              Taxes Not Included
+            </div>
+            <div class="h-4 w-px bg-white/10"></div>
+            <div class="text-slate-400 text-sm">{{ budget.expiration_date.toLocaleString('en-US',{dateStyle:'full'}) }}</div>
+          </div>
+        </div>
+      </div>
+      <!-- Breakdown Table -->
+      <div class="rounded-xl bg-surface-dark border border-white/10 overflow-hidden shadow-sm">
+        <div class="px-6 py-4 border-b border-white/10 flex justify-between items-center">
+          <h3 class="font-bold text-lg text-white">Summary</h3>
+          <span class="text-xs text-slate-500 uppercase tracking-widest">{{ budget.items.length }} Items Selected</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead>
+            <tr class="bg-white/5">
+              <th class="px-6 py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Service</th>
+              <th class="px-6 py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Quant.</th>
+              <th class="px-6 py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Unit. Price</th>
+              <th class="px-6 py-3 text-xs font-bold text-slate-400 uppercase tracking-wider text-right">Total</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+              @for (service of budget.items; track service.id) {
+                <tr class="hover:bg-white/[0.02] transition-colors">
+                  <td class="px-6 py-5">
+                    <div class="font-bold text-white">{{ service.name }}</div>
+                    <div class="text-sm text-slate-400">{{ service.description }}</div>
+                    @if (service.name === 'Web') {
+                      <br>
+                      <ul class="bg-surface-dark/50 border border-white/6 rounded-md p-3 space-y-2 text-sm text-slate-400 w-fit">
+                      <div class="text-sm text-slate-400">Extras (+30€ for each page and language):</div>
+                        <li class="flex items-center justify-between gap-3">
+                          <div class="flex items-center gap-3">
+                            <span class="">Number of</span>
+                            <span class="inline-flex items-center justify-center p-2 h-7 rounded-full bg-primary/10 text-primary text-xs font-semibold">Pages</span>
+                          </div>
+                          <span class="ml-2 font-semibold text-white">{{ service.options?.pages ?? '—' }}</span>
+                        </li>
+
+                        <li class="flex items-center justify-between gap-3">
+                          <div class="flex items-center gap-3">
+                            <span>Number of </span>
+                            <span class="inline-flex items-center justify-center p-2 h-7 rounded-full bg-primary/10 text-primary text-xs font-semibold">Languages</span>
+                          </div>
+                          <span class="ml-2 font-semibold text-white">{{ service.options?.languages ?? '—' }}</span>
+                        </li>
+                      </ul>
+                    }
+
+                  </td>
+                  <td class="px-6 py-5 text-slate-300">1</td>
+                  <td class="px-6 py-5 text-slate-300">{{ service.price }}€</td>
+                  <td class="px-6 py-5 text-right font-bold text-white">{{ service.price }}€</td> <!-- TODO!!!!!!-->
+                </tr>
+              }
+
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-black/20 p-6 flex flex-col items-end gap-2 border-t border-white/10">
+          <div class="flex justify-between w-full max-w-[200px] text-slate-400 text-sm">
+            <span>Subtotal:</span>
+            <span>{{ budget.totals }}€</span>
+          </div>
+          <div class="flex justify-between w-full max-w-[200px] text-slate-400 text-sm">
+            <span>IVA (21%):</span>
+            <span>{{ budget.totals*0.21 }}€</span>
+          </div>
+          <div class="flex justify-between w-full max-w-[240px] text-white font-bold text-xl pt-2 mt-2 border-t border-white/10">
+            <span>Total:</span>
+            <span class="text-primary">{{ budget.totals*1.21 }}€</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right Column: Client Info & Sidebar -->
+    <div class="space-y-6">
+      <!-- Client Info Card -->
+      <div class="rounded-xl bg-surface-dark border border-white/10 p-6 shadow-sm">
+        <h3 class="text-accent-cyan font-bold text-sm uppercase tracking-widest mb-6 flex items-center gap-2">
+          Customer Contact Details
+        </h3>
+        <div class="space-y-5">
+          <div class="group">
+            <p class="text-slate-500 text-xs font-medium uppercase mb-1">Full Name</p>
+            <p class="text-white font-semibold">{{ budget.customer.name }}</p>
+          </div>
+          <div class="h-px bg-white/5"></div>
+          <div class="group">
+            <p class="text-slate-500 text-xs font-medium uppercase mb-1">Email</p>
+            <p class="text-white font-semibold">{{ budget.customer.email }}</p>
+          </div>
+          <div class="h-px bg-white/5"></div>
+          <div class="group">
+            <p class="text-slate-500 text-xs font-medium uppercase mb-1">Phone Number</p>
+            <p class="text-white font-semibold">{{ budget.customer.phone }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Terms & Conditions Card -->
+      <div class="rounded-xl bg-primary/5 border border-primary/20 p-6">
+        <h4 class="text-white font-bold mb-3 flex items-center gap-2">
+          Payment Terms
+        </h4>
+        <ul class="text-slate-400 text-sm space-y-2 list-disc pl-4">
+          <li>50% upfront payment at the start of the project.</li>
+          <li>50% upon completion of the development phase.</li>
+          <li>30 days of post-launch support included.</li>
+        </ul>
+      </div>
+      <!-- Help Banner -->
+      <div class="rounded-xl bg-gradient-to-br from-background-dark to-surface-dark border border-white/10 p-6 flex items-center gap-4">
+        <div>
+          <p class="text-white font-bold text-sm">Any questions?</p>
+          <p class="text-slate-500 text-xs">Contact your assigned advisor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
