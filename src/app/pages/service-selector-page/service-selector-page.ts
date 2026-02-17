@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
     ServiceCard,
     BudgetRequestForm
   ],
-  templateUrl: './service-selector-page.component.html'
+  templateUrl: './service-selector-page.html'
 })
 export class ServiceSelectorPage {
   constructor(private router: Router) {}
@@ -37,7 +37,7 @@ export class ServiceSelectorPage {
     if (savedBudget && savedBudget.id) {
       this.router.navigate(['/budget', savedBudget.id]);
     } else {
-      console.error("No se pudo generar el ID del presupuesto");
+      console.error("Error 404: This budget it is unavailable.");
     }
   }
 

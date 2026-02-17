@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ServiceSelectorPage } from './service-selector-page.component';
+import { BudgetHistory } from './budget-history';
 
-describe('BudgetCustomizerPage', () => {
-  let component: ServiceSelectorPage;
-  let fixture: ComponentFixture<ServiceSelectorPage>;
+describe('BudgetHistory', () => {
+  let component: BudgetHistory;
+  let fixture: ComponentFixture<BudgetHistory>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ServiceSelectorPage]
+      imports: [BudgetHistory]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ServiceSelectorPage);
+    fixture = TestBed.createComponent(BudgetHistory);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
