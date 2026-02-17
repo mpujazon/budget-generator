@@ -1,0 +1,32 @@
+<header class="sticky top-0 w-full z-50 backdrop-blur-sm border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#0F172A]/80">
+  <div class="flex items-center justify-between whitespace-nowrap border-b   px-6 lg:px-10 py-3 ">
+    <div class="w-32">
+      <picture>
+        <source srcset="/logos/logo-dark.png" media="(prefers-color-scheme: dark)">
+        <img src="/logos/logo-light.png" alt="Vantyx Logo">
+      </picture>
+    </div>
+    <div
+      class="hidden md:flex flex-1 justify-end gap-8">
+      <nav class="flex items-center gap-6 lg:gap-9">
+        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="">Home</a>
+        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Budget History</a>
+        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="/budget/new">Get a budget</a>
+      </nav>
+
+    </div>
+    <button (click)="showMenu()" class="md:hidden dark:text-white  text-[#0F172A]">
+      <svg width="30px" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM7 12C7 11.4477 7.44772 11 8 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H8C7.44772 13 7 12.5523 7 12ZM13 18C13 17.4477 13.4477 17 14 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H14C13.4477 19 13 18.5523 13 18Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+  <nav
+    class="flex flex-col items-center gap-6 p-6 absolute left-0 right-0 top-full h-dvh z-50 bg-white/90 dark:bg-[#0F172A]/90 md:hidden shadow-md backdrop-blur"
+    [class.hidden]="menuVisibility()"
+  >
+    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Home</a>
+    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Budget History</a>
+    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="/budget/new">Get a budget</a>
+  </nav>
+</header>
