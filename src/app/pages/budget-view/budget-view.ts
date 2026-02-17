@@ -32,4 +32,8 @@ export class BudgetView implements OnInit {
       };
     }
   }
+
+  printPDF(){
+    window.print();
+  }
 }

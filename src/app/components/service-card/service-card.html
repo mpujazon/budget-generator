@@ -1,6 +1,5 @@
 <div class="w-full mb-4 p-8 flex items-center justify-center h-full">
   <article class="w-full max-w-96 flex flex-col h-full overflow-hidden rounded-2xl  shadow-sm ring-1 ring-slate-200 bg-card-light dark:bg-card-dark hover:shadow-xl hover:shadow-white/25 transition-all">
-    <!-- Header -->
     <div class="w-full">
       <img
         alt="Card"
@@ -9,41 +8,73 @@
       />
     </div>
 
-    <!-- Content -->
     <div class="p-6 flex flex-col flex-1">
       <div class="flex justify-between items-c">
         <div>
-          <!-- Title -->
           <h3 class="text-lg font-semibold  leading-tight">
             {{ service().name }}
           </h3>
 
-          <!-- Subtitle -->
           <p class="mt-1 text-2xl ">
             {{ service().price }} €
           </p>
         </div>
-        @if (service().id === 3) {
-          <form class="flex flex-col justify-between text-right space-y-2" aria-label="web-project-options">
-            <div class="flex items-center justify-end space-x-2">
-              <label for="pages" class="text-xs text-slate-600 dark:text-slate-300">Number of Pages</label>
-              <input id="pages" name="pages" type="number" min="1" [value]="service().options?.pages" (input)="updateService($event)"  class="w-16 px-2 py-1 text-sm text-center rounded-md border border-slate-200 bg-white/90 dark:bg-slate-800 dark:border-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="number of pages" />
+@if (service().id === 3) {
+          <div class="flex flex-col gap-1.5 text-sm" aria-label="web-project-options">
+            <div class="flex items-center gap-2">
+              <label for="pages" class="text-xs font-medium text-slate-600 dark:text-slate-300 w-10">Pages</label>
+              <div class="flex items-center border border-slate-300 dark:border-slate-600 rounded overflow-hidden">
+                <button
+                  type="button"
+                  (click)="updatePages((service().options?.pages ?? 1) - 1)"
+                  class="w-6 h-6 flex items-center justify-center bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-text-light dark:text-text-dark text-xs font-bold transition-colors"
+                >−</button>
+                <input
+                  type="number"
+                  [ngModel]="service().options?.pages"
+                  (ngModelChange)="updatePages($event)"
+                  [min]="1"
+                  [max]="99"
+                  class="w-7 h-6 text-center text-xs bg-white dark:bg-slate-800 text-text-light dark:text-text-dark border-x border-slate-300 dark:border-slate-600 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                />
+                <button
+                  type="button"
+                  (click)="updatePages((service().options?.pages ?? 1) + 1)"
+                  class="w-6 h-6 flex items-center justify-center bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-text-light dark:text-text-dark text-xs font-bold transition-colors"
+                >+</button>
+              </div>
             </div>
-            <div class="flex items-center justify-end space-x-2">
-              <label for="languages" class="text-xs text-slate-600 dark:text-slate-300">Number of Languages</label>
-              <input id="languages" name="languages" type="number" min="1" [value]="service().options?.languages" (input)="updateService($event)" class="w-16 px-2 py-1 text-sm text-center rounded-md border border-slate-200 bg-white/90 dark:bg-slate-800 dark:border-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="number of languages" />
+            <div class="flex items-center gap-2">
+              <label for="languages" class="text-xs font-medium text-slate-600 dark:text-slate-300 w-10">Lang.</label>
+              <div class="flex items-center border border-slate-300 dark:border-slate-600 rounded overflow-hidden">
+                <button
+                  type="button"
+                  (click)="updateLanguages((service().options?.languages ?? 1) - 1)"
+                  class="w-6 h-6 flex items-center justify-center bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-text-light dark:text-text-dark text-xs font-bold transition-colors"
+                >−</button>
+                <input
+                  type="number"
+                  [ngModel]="service().options?.languages"
+                  (ngModelChange)="updateLanguages($event)"
+                  [min]="1"
+                  [max]="99"
+                  class="w-7 h-6 text-center text-xs bg-white dark:bg-slate-800 text-text-light dark:text-text-dark border-x border-slate-300 dark:border-slate-600 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                />
+                <button
+                  type="button"
+                  (click)="updateLanguages((service().options?.languages ?? 1) + 1)"
+                  class="w-6 h-6 flex items-center justify-center bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-text-light dark:text-text-dark text-xs font-bold transition-colors"
+                >+</button>
+              </div>
             </div>
-
-          </form>
+          </div>
         }
       </div>
 
-      <!-- Body -->
       <p class="mt-4 text-sm leading-relaxed">
         {{ service().description }}
       </p>
 
-      <!-- Footer -->
       <div class="mt-auto">
         <button
           type="button"
@@ -54,7 +85,7 @@
           [class.bg-successful-400] = "service().selected"
           [class.hover:bg-successful-500] = "service().selected"
 
-          (click)="addService($event)"
+          (click)="addService()"
         >
           {{ !service().selected ? 'Add' : 'Service added' }}
         </button>
