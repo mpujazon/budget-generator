@@ -1,5 +1,7 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {Budget} from '../../interfaces/Budget';
+import { ActivatedRoute } from '@angular/router';
+import {BudgetService} from '../../services/budget-service';
 
 @Component({
   selector: 'app-budget-view',
@@ -7,44 +9,27 @@ import {Budget} from '../../interfaces/Budget';
   templateUrl: './budget-view.html'
 })
 
-export class BudgetView {
-  providedBudget: Budget = {
-    "id": "cf1237de-cc5d-4d68-a863-2e28bbcbdee4",
-    "customer": {
-      "name": "Miguel Pujazón Cárdenas",
-      "phone": "+34607738761",
-      "email": "mpujazoncardenas@gmail.com"
-    },
-    "items": [
-      {
-        "id": 2,
-        "name": "Ads",
-        "description": "Strategic paid advertising campaigns designed to maximize ROI and drive immediate conversions.",
-        "imgUrl": "/services/ads.webp",
-        "price": 400,
-        "selected": true
-      },
-      {
-        "id": 3,
-        "name": "Web",
-        "description": "Custom responsive web development focused on high performance and seamless user experience.",
-        "imgUrl": "/services/web.webp",
-        "price": 500,
-        "selected": true,
-        "options": {
-          "pages": 1,
-          "languages": 6
-        }
-      }
-    ],
-    "date": "2026-02-17T09:34:56.616Z",
-    "expiration_date": "2026-03-05T09:34:56.616Z",
-    "totals": 1110
-  }
+export class BudgetView implements OnInit {
+  budgetId: string | null = null;
+  providedBudget?: Budget;
+  budget: any;
 
-  budget = {
-    ...this.providedBudget,
-    "date": new Date(this.providedBudget.date),
-    "expiration_date": new Date(this.providedBudget.expiration_date)
+  private budgetService = inject(BudgetService);
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.budgetId = this.route.snapshot.paramMap.get('id');
+
+    this.providedBudget = this.budgetService
+      .getSavedBudgets()
+      .find(budget => budget.id === this.budgetId);
+
+    if (this.providedBudget) {
+      this.budget = {
+        ...this.providedBudget,
+        date: new Date(this.providedBudget.date),
+        expiration_date: new Date(this.providedBudget.expiration_date)
+      };
+    }
   }
 }

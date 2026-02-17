@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: ServiceSelectorPage
   },
   {
-    path:"budget/view",
+    path:"budget/:id",
     component: BudgetView
   },
   {
