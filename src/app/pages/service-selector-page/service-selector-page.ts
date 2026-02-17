@@ -5,12 +5,16 @@ import {BudgetService} from '../../services/budget-service';
 import {BudgetRequestForm} from '../../components/budget-request-form/budget-request-form';
 import {CustomerData} from '../../interfaces/CustomerData';
 import { Router } from '@angular/router';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-service-selector-page',
   imports: [
     ServiceCard,
-    BudgetRequestForm
+    BudgetRequestForm,
+    DialogModule,
+    ButtonModule
   ],
   templateUrl: './service-selector-page.html'
 })
@@ -18,6 +22,7 @@ export class ServiceSelectorPage {
   constructor(private router: Router) {}
   totalPrice = signal<number>(0);
   budgetService = inject(BudgetService);
+  showRequestModal = signal<boolean>(false);
 
   // Temporal Data Provider:
   servicesList = this.budgetService.getWebServices();
@@ -34,6 +39,7 @@ export class ServiceSelectorPage {
   saveBudget(customerData: CustomerData){
     const selectedServices = this.servicesList.filter(service => service.selected)
     const savedBudget = this.budgetService.saveBudget(selectedServices, customerData, this.totalPrice());
+    this.showRequestModal.set(false);
     if (savedBudget && savedBudget.id) {
       this.router.navigate(['/budget', savedBudget.id]);
     } else {
@@ -41,6 +47,9 @@ export class ServiceSelectorPage {
     }
   }
 
+  openRequestModal() {
+    this.showRequestModal.set(true);
+  }
 }
 
 
