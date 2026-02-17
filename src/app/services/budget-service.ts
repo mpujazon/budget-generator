@@ -78,7 +78,7 @@ export class BudgetService {
     }, 0);
   }
 
-  saveBudget(selectedServices: ServiceItem[], customerData: CustomerData, totalPrice: number){
+  saveBudget(selectedServices: ServiceItem[], customerData: CustomerData, totalPrice: number): Budget | null{
     const newBudget: Budget = {
       id: uuidv4(),
       customer: customerData,
@@ -90,8 +90,10 @@ export class BudgetService {
     try {
       const savedBudgets = this.getSavedBudgets();
       localStorage.setItem("savedBudgets", JSON.stringify([...savedBudgets, newBudget]));
+      return newBudget;
     }catch (e) {
       console.error('Error saving to local storage.')
+      return null;
     }
   }
 

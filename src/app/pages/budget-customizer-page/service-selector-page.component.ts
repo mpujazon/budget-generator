@@ -31,7 +31,7 @@ export class ServiceSelectorPage {
 
   saveBudget(customerData: CustomerData){
     const selectedServices = this.servicesList.filter(service => service.selected)
-    this.budgetService.saveBudget(selectedServices, customerData, this.totalPrice());
+    const savedBudget = this.budgetService.saveBudget(selectedServices, customerData, this.totalPrice());
   }
 }
 
