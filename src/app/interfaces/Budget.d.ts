@@ -6,5 +6,6 @@ export interface Budget{
   customer: CustomerData;
   items: ServiceItem[];
   date: string;
+  expiration_date: string;
   totals: number;
 }

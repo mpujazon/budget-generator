@@ -6,7 +6,7 @@ import {BudgetRequestForm} from '../../components/budget-request-form/budget-req
 import {CustomerData} from '../../interfaces/CustomerData';
 
 @Component({
-  selector: 'app-budget-customizer-page',
+  selector: 'app-service-selector-page',
   imports: [
     ServiceCard,
     BudgetRequestForm

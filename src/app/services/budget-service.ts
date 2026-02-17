@@ -79,11 +79,16 @@ export class BudgetService {
   }
 
   saveBudget(selectedServices: ServiceItem[], customerData: CustomerData, totalPrice: number): Budget | null{
+    const creationDate = new Date();
+    const expirationDate = new Date();
+    expirationDate.setDate(creationDate.getDate() + 15);
+
     const newBudget: Budget = {
       id: uuidv4(),
       customer: customerData,
       items: selectedServices,
-      date: new Date().toISOString(),
+      date: creationDate.toISOString(),
+      expiration_date: expirationDate.toISOString(),
       totals: totalPrice
     }
 
