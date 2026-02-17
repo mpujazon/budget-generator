@@ -19,3 +19,6 @@
   </div>
   <p class="text-center text-3xl outline-1 rounded-default w-fit p-4 mx-auto">Total price: <strong>{{ totalPrice() }} €</strong></p>
 </div>
+<app-budget-request-form
+  (onBudgetRequest)="saveBudget($event)" )
+/>

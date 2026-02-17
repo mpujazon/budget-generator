@@ -2,11 +2,14 @@ import {Component, inject, signal} from '@angular/core';
 import {ServiceCard} from '../../components/service-card/service-card';
 import {ServiceUpdates} from '../../interfaces/ServiceItem';
 import {BudgetService} from '../../services/budget-service';
+import {BudgetRequestForm} from '../../components/budget-request-form/budget-request-form';
+import {CustomerData} from '../../interfaces/CustomerData';
 
 @Component({
   selector: 'app-budget-customizer-page',
   imports: [
-    ServiceCard
+    ServiceCard,
+    BudgetRequestForm
   ],
   templateUrl: './service-selector-page.component.html'
 })
@@ -24,6 +27,11 @@ export class ServiceSelectorPage {
 
     serviceItem = this.budgetService.updateServiceOptions(serviceItem, updates);
     this.totalPrice.set(this.budgetService.calculateTotals(this.servicesList));
+  }
+
+  saveBudget(customerData: CustomerData){
+    const selectedServices = this.servicesList.filter(service => service.selected)
+    this.budgetService.saveBudget(selectedServices, customerData, this.totalPrice());
   }
 }
 

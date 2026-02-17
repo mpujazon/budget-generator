@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ServiceItem, ServiceUpdates} from '../interfaces/ServiceItem';
+import { v4 as uuidv4 } from 'uuid';
+import {CustomerData} from '../interfaces/CustomerData';
+import {Budget} from '../interfaces/Budget';
 
 @Injectable({
   providedIn: 'root',
@@ -73,5 +76,27 @@ export class BudgetService {
       }
       return acc;
     }, 0);
+  }
+
+  saveBudget(selectedServices: ServiceItem[], customerData: CustomerData, totalPrice: number){
+    const newBudget: Budget = {
+      id: uuidv4(),
+      customer: customerData,
+      items: selectedServices,
+      date: new Date().toISOString(),
+      totals: totalPrice
+    }
+
+    try {
+      const savedBudgets = this.getSavedBudgets();
+      localStorage.setItem("savedBudgets", JSON.stringify([...savedBudgets, newBudget]));
+    }catch (e) {
+      console.error('Error saving to local storage.')
+    }
+  }
+
+  getSavedBudgets(): Budget[]{
+    const savedBudgets = localStorage.getItem("savedBudgets");
+    return JSON.parse(savedBudgets? savedBudgets : "[]");
   }
 }
