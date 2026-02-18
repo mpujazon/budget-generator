@@ -1,7 +1,8 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, DOCUMENT, inject, OnInit} from '@angular/core';
 import {Budget} from '../../interfaces/Budget';
 import { ActivatedRoute } from '@angular/router';
 import {BudgetService} from '../../services/budget-service';
+import { Clipboard } from '@angular/cdk/clipboard'
 
 @Component({
   selector: 'app-budget-view',
@@ -14,8 +15,12 @@ export class BudgetView implements OnInit {
   providedBudget?: Budget;
   budget: any;
 
+  private document = inject(DOCUMENT);
   private budgetService = inject(BudgetService);
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private clipboard: Clipboard
+    ) {}
 
   ngOnInit(): void {
     this.budgetId = this.route.snapshot.paramMap.get('id');
@@ -33,6 +38,9 @@ export class BudgetView implements OnInit {
     }
   }
 
+  copyURL(){
+    this.clipboard.copy(document.location.href)
+  }
   printPDF(){
     window.print();
   }
