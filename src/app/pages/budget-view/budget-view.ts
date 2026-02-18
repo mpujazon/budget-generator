@@ -1,4 +1,4 @@
-import {Component, DOCUMENT, inject, OnInit} from '@angular/core';
+import {Component, DOCUMENT, inject, OnInit, signal} from '@angular/core';
 import {Budget} from '../../interfaces/Budget';
 import { ActivatedRoute } from '@angular/router';
 import {BudgetService} from '../../services/budget-service';
@@ -14,6 +14,7 @@ export class BudgetView implements OnInit {
   budgetId: string | null = null;
   providedBudget?: Budget;
   budget: any;
+  urlCopied = signal(false);
 
   private document = inject(DOCUMENT);
   private budgetService = inject(BudgetService);
@@ -39,7 +40,11 @@ export class BudgetView implements OnInit {
   }
 
   copyURL(){
-    this.clipboard.copy(document.location.href)
+    this.clipboard.copy(document.location.href);
+    this.urlCopied.set(true);
+    setTimeout(() => {
+      this.urlCopied.set(false);
+    }, 2000);
   }
   printPDF(){
     window.print();
