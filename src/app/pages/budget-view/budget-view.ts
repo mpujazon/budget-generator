@@ -3,10 +3,13 @@ import {Budget} from '../../interfaces/Budget';
 import { ActivatedRoute } from '@angular/router';
 import {BudgetService} from '../../services/budget-service';
 import { Clipboard } from '@angular/cdk/clipboard'
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-budget-view',
-  imports: [],
+  imports: [
+    DatePipe
+  ],
   templateUrl: './budget-view.html'
 })
 
@@ -26,17 +29,9 @@ export class BudgetView implements OnInit {
   ngOnInit(): void {
     this.budgetId = this.route.snapshot.paramMap.get('id');
 
-    this.providedBudget = this.budgetService
+    this.budget = this.budgetService
       .getSavedBudgets()
       .find(budget => budget.id === this.budgetId);
-
-    if (this.providedBudget) {
-      this.budget = {
-        ...this.providedBudget,
-        date: new Date(this.providedBudget.date),
-        expiration_date: new Date(this.providedBudget.expirationDate)
-      };
-    }
   }
 
   copyURL(){

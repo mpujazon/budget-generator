@@ -1,10 +1,13 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Budget} from '../../interfaces/Budget';
 import {BudgetService} from '../../services/budget-service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-budget-history',
-  imports: [],
+  imports: [
+    DatePipe
+  ],
   templateUrl: './budget-history.html'
 })
 export class BudgetHistory implements OnInit{

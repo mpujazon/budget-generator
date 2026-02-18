@@ -5,7 +5,7 @@
       <div class="flex items-center gap-3 mb-2">
         <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary/10 text-secondary border border-secondary/20 tracking-wider uppercase">Approve Pending</span>
         <span class="text-slate-500 text-sm">•</span>
-        <span class="text-slate-500 dark:text-slate-400 text-sm">{{ budget.date.toLocaleString('en-US',{dateStyle:'full'}) }}</span>
+        <span class="text-slate-500 dark:text-slate-400 text-sm">{{ budget.date | date:'fullDate' }}</span>
       </div>
       <h2 class="text-4xl font-black text-text-light dark:text-text-dark tracking-tight">Budget #{{ budget.id.slice(0,8) }}</h2>
       <p class="text-slate-500 dark:text-slate-400 mt-1">Vantyx - Web Services and Solutions</p>
@@ -42,7 +42,7 @@
               Taxes Not Included
             </div>
             <div class="h-4 w-px bg-slate-300 dark:bg-white/10"></div>
-            <div class="text-slate-500 dark:text-slate-400 text-sm">Budget available until {{ budget.expirationDate.toLocaleString('en-US',{dateStyle:'full'}) }}</div>
+            <div class="text-slate-500 dark:text-slate-400 text-sm">Budget available until {{ budget.expirationDate | date:'fullDate' }}</div>
           </div>
         </div>
       </div>
