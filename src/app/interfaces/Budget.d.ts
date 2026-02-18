@@ -6,15 +6,7 @@ export interface Budget{
   customer: CustomerData;
   items: ServiceItem[];
   date: string;
-  expiration_date: string;
-  totals: number;
-}
-
-export interface newIBudget{
-  id: string;
-  customer: CustomerData;
-  items: ServiceItem[];
-  date: string;
-  expiration_date: string;
+  expirationDate: string;
+  webServiceSubtotal?: number;
   totals: number;
 }

@@ -56,22 +56,26 @@ export class BudgetService {
     return service;
   }
 
-  calculateTotals(items: ServiceItem[]): number{
+  calculateSubtotal(item: ServiceItem): number{
+    if (!item) return 0;
+
     const COST_PER_PAGE = 30;
     const COST_PER_LANG = 30;
 
-    return items.reduce((acc, item) => {
-      const numPages = item.options?.pages ?? 0;
-      const numLanguages = item.options?.languages ?? 0;
+    const numPages = item.options?.pages ?? 0;
+    const numLanguages = item.options?.languages ?? 0;
 
+    return item.price + (numPages*COST_PER_PAGE + numLanguages*COST_PER_LANG);
+  }
+
+  calculateTotals(items: ServiceItem[]): number{
+    return items.reduce((acc, item) => {
       if (item.selected) {
         let serviceTotal = item.price;
 
         if (item.options) {
-          serviceTotal += (numPages * COST_PER_PAGE);
-          serviceTotal += (numLanguages * COST_PER_LANG);
+          serviceTotal += this.calculateSubtotal(item);
         }
-
         return acc + serviceTotal;
       }
       return acc;
@@ -82,13 +86,16 @@ export class BudgetService {
     const creationDate = new Date();
     const expirationDate = new Date();
     expirationDate.setDate(creationDate.getDate() + 15);
+    const serviceWithOptions = selectedServices.find((item)=> item.options !== undefined) as ServiceItem;
+    const optionsSubtotal = this.calculateSubtotal(serviceWithOptions);
 
     const newBudget: Budget = {
       id: uuidv4(),
       customer: customerData,
       items: selectedServices,
       date: creationDate.toISOString(),
-      expiration_date: expirationDate.toISOString(),
+      expirationDate: expirationDate.toISOString(),
+      webServiceSubtotal: optionsSubtotal,
       totals: totalPrice
     }
 

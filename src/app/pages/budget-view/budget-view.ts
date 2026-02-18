@@ -28,7 +28,7 @@ export class BudgetView implements OnInit {
       this.budget = {
         ...this.providedBudget,
         date: new Date(this.providedBudget.date),
-        expiration_date: new Date(this.providedBudget.expiration_date)
+        expiration_date: new Date(this.providedBudget.expirationDate)
       };
     }
   }
