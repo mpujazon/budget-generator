@@ -20,10 +20,10 @@ export class BudgetView implements OnInit {
   urlCopied = signal(false);
 
   private document = inject(DOCUMENT);
+  private clipboard = inject(Clipboard);
   private budgetService = inject(BudgetService);
   constructor(
-    private route: ActivatedRoute,
-    private clipboard: Clipboard
+    private route: ActivatedRoute
     ) {}
 
   ngOnInit(): void {
