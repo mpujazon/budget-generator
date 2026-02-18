@@ -9,3 +9,12 @@ export interface Budget{
   expiration_date: string;
   totals: number;
 }
+
+export interface newIBudget{
+  id: string;
+  customer: CustomerData;
+  items: ServiceItem[];
+  date: string;
+  expiration_date: string;
+  totals: number;
+}
