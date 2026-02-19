@@ -7,6 +7,7 @@ import {CustomerData} from '../../interfaces/CustomerData';
 import { Router } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import {Button} from '../../components/atoms/button/button';
 
 @Component({
   selector: 'app-service-selector-page',
@@ -14,7 +15,8 @@ import { ButtonModule } from 'primeng/button';
     ServiceCard,
     BudgetRequestForm,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    Button
   ],
   templateUrl: './service-selector-page.html'
 })
