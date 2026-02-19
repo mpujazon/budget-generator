@@ -9,9 +9,9 @@
     <div
       class="hidden md:flex flex-1 justify-end gap-8">
       <nav class="flex items-center gap-6 lg:gap-9">
-        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="">Home</a>
-        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="/budget/history">Budget History</a>
-        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="/budget/new">Get a budget</a>
+        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" [routerLink]="'/'" ]>Home</a>
+        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" [routerLink]="'/budget/history'">Budget History</a>
+        <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" [routerLink]="'/budget/new'">Get a budget</a>
       </nav>
 
     </div>
@@ -25,8 +25,8 @@
     class="flex flex-col items-center gap-6 p-6 absolute left-0 right-0 top-full h-dvh z-50 bg-white/90 dark:bg-[#0F172A]/90 md:hidden shadow-md backdrop-blur"
     [class.hidden]="menuVisibility()"
   >
-    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Home</a>
-    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="/budget/history">Budget History</a>
-    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="/budget/new">Get a budget</a>
+    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" [routerLink]="'/'">Home</a>
+    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" [routerLink]="'/budget/history'">Budget History</a>
+    <a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" [routerLink]="'/budget/new'">Get a budget</a>
   </nav>
 </header>
