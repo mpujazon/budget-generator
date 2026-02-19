@@ -124,24 +124,8 @@
         <app-customer-details-card
           [customer]="budget.customer"
         />
-      <!-- Terms & Conditions Card -->
-      <div class="rounded-xl bg-primary/5 border border-primary/20 p-6">
-        <h4 class="text-text-light dark:text-text-dark font-bold mb-3 flex items-center gap-2">
-          Payment Terms
-        </h4>
-        <ul class="text-slate-500 dark:text-slate-400 text-sm space-y-2 list-disc pl-4">
-          <li>50% upfront payment at the start of the project.</li>
-          <li>50% upon completion of the development phase.</li>
-          <li>30 days of post-launch support included.</li>
-        </ul>
-      </div>
-      <!-- Help Banner -->
-      <div class="rounded-xl bg-slate-100 dark:bg-gradient-to-br dark:from-background-dark dark:to-surface-dark border border-slate-200 dark:border-white/10 p-6 flex items-center gap-4">
-        <div>
-          <p class="text-text-light dark:text-text-dark font-bold text-sm">Any questions?</p>
-          <p class="text-slate-500 text-xs">Contact your assigned advisor.</p>
-        </div>
-      </div>
+        <app-payment-terms/>
+        <app-help-card/>
     </div>
   </div>
 </main>

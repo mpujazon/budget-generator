@@ -6,13 +6,17 @@ import { Clipboard } from '@angular/cdk/clipboard'
 import {DatePipe} from '@angular/common';
 import {Button} from '../../components/atoms/button/button';
 import {CustomerDetailsCard} from '../../components/customer-details-card/customer-details-card';
+import {PaymentTerms} from '../../components/payment-terms/payment-terms';
+import {HelpCard} from '../../components/help-card/help-card';
 
 @Component({
   selector: 'app-budget-view',
   imports: [
     DatePipe,
     Button,
-    CustomerDetailsCard
+    CustomerDetailsCard,
+    PaymentTerms,
+    HelpCard
   ],
   templateUrl: './budget-view.html'
 })
