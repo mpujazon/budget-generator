@@ -1,0 +1,21 @@
+<a [href]="`budget/${budget().id}`">
+  <div class="group bg-card-light dark:bg-card-dark rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 cursor-pointer relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+    <div class="flex justify-between items-start mb-4 relative z-10">
+      <div class="bg-blue-100 dark:bg-blue-900/30 p-2.5 rounded-lg text-primary">
+        <span>Budget</span>
+      </div>
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">
+              Under Review
+            </span>
+    </div>
+    <h3 class="text-lg font-bold text-text-light dark:text-text-dark mb-1 group-hover:text-primary transition-colors">{{budget().customer.name}}</h3>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Requested on {{ budget().date | date:'fullDate'}}</p>
+    <div class="flex justify-between items-end border-t border-slate-200 dark:border-slate-700 pt-4 mt-2">
+      <div>
+        <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-semibold tracking-wider mb-1">Total Budget</p>
+        <p class="text-2xl font-bold text-text-light dark:text-text-dark">{{ budget().totals }}€</p>
+      </div>
+    </div>
+  </div>
+</a>

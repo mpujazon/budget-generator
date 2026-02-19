@@ -4,13 +4,15 @@ import {BudgetService} from '../../services/budget-service';
 import {DatePipe} from '@angular/common';
 import {Button} from '../../components/atoms/button/button';
 import {RouterLink} from '@angular/router';
+import {BudgetCard} from '../../components/budget-card/budget-card';
 
 @Component({
   selector: 'app-budget-history',
   imports: [
     DatePipe,
     Button,
-    RouterLink
+    RouterLink,
+    BudgetCard
   ],
   templateUrl: './budget-history.html'
 })
