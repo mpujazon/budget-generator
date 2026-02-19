@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import {BudgetService} from '../../services/budget-service';
 import { Clipboard } from '@angular/cdk/clipboard'
 import {DatePipe} from '@angular/common';
+import {Button} from '../../components/atoms/button/button';
 
 @Component({
   selector: 'app-budget-view',
   imports: [
-    DatePipe
+    DatePipe,
+    Button
   ],
   templateUrl: './budget-view.html'
 })
