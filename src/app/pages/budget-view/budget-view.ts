@@ -8,6 +8,7 @@ import {Button} from '../../components/atoms/button/button';
 import {CustomerDetailsCard} from '../../components/customer-details-card/customer-details-card';
 import {PaymentTerms} from '../../components/payment-terms/payment-terms';
 import {HelpCard} from '../../components/help-card/help-card';
+import {SummaryBudgetView} from '../../components/summary-budget-view/summary-budget-view';
 
 @Component({
   selector: 'app-budget-view',
@@ -16,7 +17,8 @@ import {HelpCard} from '../../components/help-card/help-card';
     Button,
     CustomerDetailsCard,
     PaymentTerms,
-    HelpCard
+    HelpCard,
+    SummaryBudgetView
   ],
   templateUrl: './budget-view.html'
 })

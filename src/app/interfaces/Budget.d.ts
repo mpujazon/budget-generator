@@ -7,6 +7,6 @@ export interface Budget{
   items: ServiceItem[];
   date: string;
   expirationDate: string;
-  webServiceSubtotal?: number;
+  webServiceSubtotal: number;
   totals: number;
 }
