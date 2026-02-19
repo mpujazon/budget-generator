@@ -3,9 +3,9 @@
   [disabled]="disabled()"
   [ngClass]="
     {
-      'bg-primary hover:bg-primary/90 text-white px-6 shadow-primary/25 font-bold': type() === 'primary',
-      'bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10  hover:bg-slate-200 dark:hover:bg-white/10 text-text-light dark:text-text-dark shadow-slate-100/5 font-semibold': type() === 'secondary',
-      'bg-successful-400 hover:bg-successful-500 font-bold': type() === 'successful',
+      'bg-primary hover:bg-primary/90 text-white px-6 shadow-primary/25 font-bold': buttonStyle() === 'primary',
+      'bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10  hover:bg-slate-200 dark:hover:bg-white/10 text-text-light dark:text-text-dark shadow-slate-100/5 font-semibold': buttonStyle() === 'secondary',
+      'bg-successful-400 hover:bg-successful-500 font-bold': buttonStyle() === 'successful',
       'w-full text-center': fullWidth()
     }
   "

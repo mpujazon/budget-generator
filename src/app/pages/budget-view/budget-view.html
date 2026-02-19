@@ -15,7 +15,7 @@
         <app-button
           (click)="copyURL()"
           [label]="'Copy URL'"
-          [type]="'secondary'"
+          [buttonStyle]="'secondary'"
         />
         @if (urlCopied()) {
           <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 rounded-md bg-green-500 text-white text-sm font-medium shadow-lg animate-fade-in">
@@ -26,7 +26,7 @@
       <app-button
         (click)="printPDF()"
         [label]="'Print Budget'"
-        [type]="'primary'"
+        [buttonStyle]="'primary'"
       />
     </div>
   </div>

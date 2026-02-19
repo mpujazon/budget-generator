@@ -78,7 +78,7 @@
       <div class="mt-auto">
         <app-button
           [label]="!service().selected ? 'Add' : 'Service added'"
-          [type]="!service().selected? 'primary' : 'successful'"
+          [buttonStyle]="!service().selected? 'primary' : 'successful'"
           (click)="addService()"
           [fullWidth]="true"
         />

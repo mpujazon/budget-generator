@@ -1,5 +1,5 @@
 import {Component, input} from '@angular/core';
-import {ButtonTypes} from '../../../interfaces/Button';
+import {ButtonStyles} from '../../../interfaces/Button';
 import {NgClass} from '@angular/common';
 
 @Component({
@@ -11,7 +11,7 @@ import {NgClass} from '@angular/common';
 })
 export class Button {
   label = input.required<string>();
-  type = input.required<ButtonTypes>();
+  buttonStyle = input.required<ButtonStyles>();
   fullWidth = input<boolean>(false);
   disabled = input<boolean>(false);
 }

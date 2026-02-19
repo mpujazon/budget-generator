@@ -3,13 +3,15 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {CustomerData} from '../../interfaces/CustomerData';
+import {Button} from '../atoms/button/button';
 
 @Component({
   selector: 'app-budget-request-form',
   imports: [
     ReactiveFormsModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    Button
   ],
   templateUrl: './budget-request-form.html'
 })
