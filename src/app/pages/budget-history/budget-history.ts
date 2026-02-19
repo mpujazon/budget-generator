@@ -1,7 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Budget} from '../../interfaces/Budget';
 import {BudgetService} from '../../services/budget-service';
-import {DatePipe} from '@angular/common';
 import {Button} from '../../components/atoms/button/button';
 import {RouterLink} from '@angular/router';
 import {BudgetCard} from '../../components/budget-card/budget-card';
@@ -9,7 +8,6 @@ import {BudgetCard} from '../../components/budget-card/budget-card';
 @Component({
   selector: 'app-budget-history',
   imports: [
-    DatePipe,
     Button,
     RouterLink,
     BudgetCard

@@ -5,12 +5,14 @@ import {BudgetService} from '../../services/budget-service';
 import { Clipboard } from '@angular/cdk/clipboard'
 import {DatePipe} from '@angular/common';
 import {Button} from '../../components/atoms/button/button';
+import {CustomerDetailsCard} from '../../components/customer-details-card/customer-details-card';
 
 @Component({
   selector: 'app-budget-view',
   imports: [
     DatePipe,
-    Button
+    Button,
+    CustomerDetailsCard
   ],
   templateUrl: './budget-view.html'
 })
@@ -31,9 +33,13 @@ export class BudgetView implements OnInit {
   ngOnInit(): void {
     this.budgetId = this.route.snapshot.paramMap.get('id');
 
-    this.budget = this.budgetService
+    const result = this.budgetService
       .getSavedBudgets()
       .find(budget => budget.id === this.budgetId);
+
+    if(result !== undefined){
+      this.budget = result;
+    }
   }
 
   copyURL(){

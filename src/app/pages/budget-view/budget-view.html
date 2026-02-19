@@ -120,30 +120,10 @@
         </div>
       </div>
     </div>
-    <!-- Right Column: Client Info & Sidebar -->
-    <div class="space-y-6">
-      <!-- Client Info Card -->
-      <div class="rounded-xl bg-card-light dark:bg-card-dark border border-slate-200 dark:border-white/10 p-6 shadow-sm">
-        <h3 class="text-secondary font-bold text-sm uppercase tracking-widest mb-6 flex items-center gap-2">
-          Customer Contact Details
-        </h3>
-        <div class="space-y-5">
-          <div class="group">
-            <p class="text-slate-500 text-xs font-medium uppercase mb-1">Full Name</p>
-            <p class="text-text-light dark:text-text-dark font-semibold">{{ budget.customer.name }}</p>
-          </div>
-          <div class="h-px bg-slate-200 dark:bg-white/5"></div>
-          <div class="group">
-            <p class="text-slate-500 text-xs font-medium uppercase mb-1">Email</p>
-            <p class="text-text-light dark:text-text-dark font-semibold">{{ budget.customer.email }}</p>
-          </div>
-          <div class="h-px bg-slate-200 dark:bg-white/5"></div>
-          <div class="group">
-            <p class="text-slate-500 text-xs font-medium uppercase mb-1">Phone Number</p>
-            <p class="text-text-light dark:text-text-dark font-semibold">{{ budget.customer.phone }}</p>
-          </div>
-        </div>
-      </div>
+    <div class="flex flex-col gap-8">
+        <app-customer-details-card
+          [customer]="budget.customer"
+        />
       <!-- Terms & Conditions Card -->
       <div class="rounded-xl bg-primary/5 border border-primary/20 p-6">
         <h4 class="text-text-light dark:text-text-dark font-bold mb-3 flex items-center gap-2">

@@ -1,0 +1,21 @@
+<div class="rounded-xl bg-card-light dark:bg-card-dark border border-slate-200 dark:border-white/10 p-6 shadow-sm">
+  <h3 class="text-secondary font-bold text-sm uppercase tracking-widest mb-6 flex items-center gap-2">
+    Customer Contact Details
+  </h3>
+  <div class="space-y-5">
+    <div class="group">
+      <p class="text-slate-500 text-xs font-medium uppercase mb-1">Full Name</p>
+      <p class="text-text-light dark:text-text-dark font-semibold">{{ customer().name }}</p>
+    </div>
+    <div class="h-px bg-slate-200 dark:bg-white/5"></div>
+    <div class="group">
+      <p class="text-slate-500 text-xs font-medium uppercase mb-1">Email</p>
+      <p class="text-text-light dark:text-text-dark font-semibold">{{ customer().email }}</p>
+    </div>
+    <div class="h-px bg-slate-200 dark:bg-white/5"></div>
+    <div class="group">
+      <p class="text-slate-500 text-xs font-medium uppercase mb-1">Phone Number</p>
+      <p class="text-text-light dark:text-text-dark font-semibold">{{ customer().phone }}</p>
+    </div>
+  </div>
+</div>
