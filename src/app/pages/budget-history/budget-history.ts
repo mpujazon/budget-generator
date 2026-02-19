@@ -2,11 +2,15 @@ import {Component, inject, OnInit} from '@angular/core';
 import {Budget} from '../../interfaces/Budget';
 import {BudgetService} from '../../services/budget-service';
 import {DatePipe} from '@angular/common';
+import {Button} from '../../components/atoms/button/button';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-budget-history',
   imports: [
-    DatePipe
+    DatePipe,
+    Button,
+    RouterLink
   ],
   templateUrl: './budget-history.html'
 })
