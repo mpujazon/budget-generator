@@ -14,4 +14,5 @@ export class Button {
 
   label = input.required<string>();
   type = input.required<ButtonTypes>();
+  fullWidth = input<boolean>(false);
 }

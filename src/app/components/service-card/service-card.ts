@@ -2,10 +2,11 @@ import {Component, input, output} from '@angular/core';
 import {ServiceItem, ServiceUpdates} from '../../interfaces/ServiceItem';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {FormsModule} from '@angular/forms';
+import {Button} from '../atoms/button/button';
 
 @Component({
   selector: 'app-service-card',
-  imports: [InputNumberModule, FormsModule],
+  imports: [InputNumberModule, FormsModule, Button],
   templateUrl: './service-card.html'
 })
 export class ServiceCard {
