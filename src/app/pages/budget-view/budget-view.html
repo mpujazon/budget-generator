@@ -97,7 +97,7 @@
                   </td>
                   <td class="px-6 py-5 text-slate-600 dark:text-slate-300">1</td>
                   <td class="px-6 py-5 text-slate-600 dark:text-slate-300">{{ (service.price).toFixed(2) }}€</td>
-                  <td class="px-6 py-5 text-right font-bold text-text-light dark:text-text-dark">{{ (service.options !== undefined? budget.webServiceSubtotal : service.price).toFixed(2) }}€</td>
+                  <td class="px-6 py-5 text-right font-bold text-text-light dark:text-text-dark">{{ (service.options !== undefined? service.price + budget.webServiceSubtotal : service.price).toFixed(2) }}€</td>
                 </tr>
               }
 

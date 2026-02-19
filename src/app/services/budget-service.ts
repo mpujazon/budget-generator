@@ -65,7 +65,7 @@ export class BudgetService {
     const numPages = item.options?.pages ?? 0;
     const numLanguages = item.options?.languages ?? 0;
 
-    return item.price + (numPages*COST_PER_PAGE + numLanguages*COST_PER_LANG);
+    return (numPages*COST_PER_PAGE + numLanguages*COST_PER_LANG);
   }
 
   calculateTotals(items: ServiceItem[]): number{
