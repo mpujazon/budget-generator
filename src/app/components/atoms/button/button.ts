@@ -10,8 +10,6 @@ import {NgClass} from '@angular/common';
   templateUrl: './button.html'
 })
 export class Button {
-  states = ['primary','secondary','submit'];
-
   label = input.required<string>();
   type = input.required<ButtonTypes>();
   fullWidth = input<boolean>(false);

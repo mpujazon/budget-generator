@@ -11,8 +11,7 @@ import {CustomerData} from '../../interfaces/CustomerData';
     InputTextModule,
     ButtonModule
   ],
-  templateUrl: './budget-request-form.html',
-  styleUrl: './budget-request-form.css',
+  templateUrl: './budget-request-form.html'
 })
 export class BudgetRequestForm {
   private fb = inject(FormBuilder);

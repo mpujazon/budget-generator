@@ -1,1 +1,1 @@
-export type ButtonTypes = 'primary' | 'secondary' | 'submit' | 'successful';
+export type ButtonTypes = 'primary' | 'secondary' | 'successful';
